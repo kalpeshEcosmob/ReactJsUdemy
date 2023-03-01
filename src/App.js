@@ -25,9 +25,13 @@ function App() {
       date: new Date(Date.UTC(2012, 11, 20, 3, 0, 0)),
     },
   ];
+
+  const recieveDateNewExpense = (data) => {
+    console.log("data in app", data);
+  };
   return (
     <div>
-      <NewExpense />
+      <NewExpense onRecieveData={recieveDateNewExpense} />
       <Expense item={expenses} />
     </div>
   );

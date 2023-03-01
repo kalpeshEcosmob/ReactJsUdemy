@@ -9,7 +9,11 @@ function ExpenseItem(props) {
   const [prev, newA] = useState(props.date);
 
   const clickHandler = () => {
-    setTitle("Updated");
+    if (title === props.title) {
+      setTitle("Updated");
+    } else if (title === "Updated") {
+      setTitle(props.title);
+    }
     let a = new Date(Date.UTC(2016, 1, 1, 3, 0, 0));
     newA(a);
   };
