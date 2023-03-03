@@ -2,28 +2,27 @@ import React, { useState } from "react";
 import "./ExpenseForm.css";
 
 function ExpenseForm(props) {
-  const changetitle = (event) => {
-    console.log(event.target.value);
-    newTitle(event.target.value);
-    newAmount(event.target.value);
-    newDate(event.target.value);
-  };
-
-  // const onSubmitHandler = (event) => {};
-
   const [prevTitle, newTitle] = useState("");
   const [prevAmount, newAmount] = useState("");
   const [prevDate, newDate] = useState("");
 
+  const changetitle = (event) => {
+    newTitle(event.target.value);
+  };
+  const changetitle1 = (event) => {
+    newAmount(event.target.value);
+  };
+  const changetitle2 = (event) => {
+    newDate(event.target.value);
+  };
+
   const submithandler = (event) => {
     event.preventDefault();
-    newTitle(event.target.value);
     const values = {
       title: prevTitle,
       amount: prevAmount,
       date: new Date(prevDate),
     };
-    console.log("values are", values);
     props.onsaveData(values);
   };
 
@@ -38,13 +37,13 @@ function ExpenseForm(props) {
           <label>Amount</label>
           <input
             type="number"
-            onChange={changetitle}
+            onChange={changetitle1}
             placeholder="Enter text"
           />
         </div>
         <div className="new-expense__control">
           <label>Date</label>
-          <input type="date" onChange={changetitle} placeholder="Enter text" />
+          <input type="date" onChange={changetitle2} placeholder="Enter text" />
         </div>
         <div className="new-expense__actions">
           <button type="submit">Add</button>
